@@ -1,57 +1,306 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
-    <title>
-        Webpage
-    </title>
-    <link rel ="stylesheet" href="styles.css">
+    <title>Webpage</title>
+    <link rel="stylesheet" href="Project.css">
 </head>
 <body>
+
     <header>
-        <h1>Wlecome to our Real Estate Website</h1>
+        <div class="logo">The Skyline Park</div>
+        <h1>Welcome to our Real Estate Website</h1>
         <nav>
             <ul>
-                <li><a href =" ">Home</a></li>
-                <li><a href =" ">Properties</a></li>
-                <li><a href =" ">Contact</a></li>
-                <li><a href =" ">About</a></li>
+                <li><a href="#" onclick="showHomeSection()">Home</a></li>
+                <li><a href="#" onclick="showNewProperties()">Properties</a></li>
+                <li><a href="#" onclick="openModal('aboutModal'); return false;">About</a></li>
             </ul>
         </nav>
+        <div class="auth-buttons">
+            <button onclick="openModal('createAccountModal')">Create Account</button>
+            <button onclick="openModal('loginModal')">Login</button>
+        </div>
     </header>
 
-    <section id="property-list">
-        <h2>Featured Properties</h2>
+    <div style="text-align:center; margin: 20px;">
+        <button onclick="openContactModal()">Contact Us</button>
+    </div>
 
-        <div class="property-card">
-            <img src=" " alt="Property 1">
-            <h3>Beautiful Family Home</h3>
-            <p>Price: INR 75,00,000</p>
-            <p>Location: Benguluru</p>
-            <button onclick="showdetails('Beautiful Family Home','INR 75,00,000','Benguluru')">View Details</button>
-        </div>
-
-        <div class="property-card">
-            <img src=" " alt="Property 2">
-            <h3>Residential Plot</h3>
-            <p>Price: INR 40,00,000</p>
-            <p>Location: Kolkata</p>
-            <button onclick="showdatails('Residential Plot','INR 40,00,000','Kolkata')">View Details</button>
-        </div>
-
-        <div class="property-card">
-            <img src=" " alt="Property 3">
-            <h3>Luxury Villa</h3>
-            <p>Price: INR 10,00,00,000</p>
-            <p>Location: Delhi</p>
-            <button onclick="showdatails('Luxury villa','INR 10,00,00,000','Delhi')">View Details</button>
-        </div>
-
+    <section>
+        <h2>Find Your Dream Property</h2>
+        <form id="searchForm" onsubmit="filterProperties(event)">
+            <input type="text" id="searchInput" placeholder="Search by city or type">
+            <select id="propertyTypeSelect">
+                <option value="">All Property Types</option>
+                <option value="home">Home</option>
+                <option value="land">Land</option>
+                <option value="apartment">Apartment</option>
+            </select>
+            <select id="priceRangeSelect">
+                <option value="">Price Range</option>
+                <option value="low">Below 50L</option>
+                <option value="mid">50L - 1Cr</option>
+                <option value="high">Above 1Cr</option>
+            </select>
+            <button type="submit">Search</button>
+        </form>
     </section>
 
-    <script src ="C:\Users\KARTHIK\OneDrive\Desktop\Project\File.js"></script>
-    
+    <section id="property-list" style="display: block;">
+        <h2>Featured Properties</h2>
+
+        <div class="property-card" data-type="home" data-location="Bengaluru" data-price="mid">
+            <img src="https://via.placeholder.com/200" alt="Beautiful Family Home">
+            <h3>Beautiful Family Home</h3>
+            <p>Price: INR 45,00,000</p>
+            <p>Location: Bengaluru</p>
+            <button onclick="showdetails('Beautiful Family Home','INR 75,00,000','Bengaluru')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="land" data-location="Kolkata" data-price="low">
+            <img src="https://via.placeholder.com/200" alt="Residential Plot">
+            <h3>Residential Plot</h3>
+            <p>Price: INR 30,00,000</p>
+            <p>Location: Kolkata</p>
+            <button onclick="showdetails('Residential Plot','INR 40,00,000','Kolkata')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="home" data-location="Delhi" data-price="high">
+            <img src="https://via.placeholder.com/200" alt="Luxury Villa">
+            <h3>Luxury Villa</h3>
+            <p>Price: INR 75,00,00,000</p>
+            <p>Location: Delhi</p>
+            <button onclick="showdetails('Luxury Villa','INR 10,00,00,000','Delhi')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="apartment" data-location="Mumbai" data-price="mid">
+            <img src="https://via.placeholder.com/200" alt="City Apartment">
+            <h3>City Apartment</h3>
+            <p>Price: INR 1,00,00,000</p>
+            <p>Location: Mumbai</p>
+            <button onclick="showdetails('City Apartment','INR 85,00,000','Mumbai')">View Details</button>
+        </div>
+    </section>
+
+    <section id="new-property-list" style="display: none;">
+        <h2>Explore Our New Properties</h2>
+
+        <div class="property-card" data-type="home" data-location="Chennai" data-price="mid">
+            <img src="https://via.placeholder.com/200" alt="Family Home">
+            <h3>Family Home</h3>
+            <p>Price: INR 55,00,000</p>
+            <p>Location: Chennai</p>
+            <button onclick="showdetails('Cozy Family Home','INR 55,00,000','Chennai')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="land" data-location="Pune" data-price="low">
+            <img src="https://via.placeholder.com/200" alt="Spacious Residential Plot">
+            <h3>Residential Plot</h3>
+            <p>Price: INR 40,00,000</p>
+            <p>Location: Pune</p>
+            <button onclick="showdetails('Spacious Residential Plot','INR 40,00,000','Pune')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="apartment" data-location="Hyderabad" data-price="mid">
+            <img src="https://via.placeholder.com/200" alt="Modern Apartment">
+            <h3>Modern Apartment</h3>
+            <p>Price: INR 75,00,000</p>
+            <p>Location: Hyderabad</p>
+            <button onclick="showdetails('Modern Apartment','INR 75,00,000','Hyderabad')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="home" data-location="Ahmedabad" data-price="low">
+            <img src="https://via.placeholder.com/200" alt="Suburban House">
+            <h3>Suburban House</h3>
+            <p>Price: INR 35,00,000</p>
+            <p>Location: Ahmedabad</p>
+            <button onclick="showdetails('Suburban House','INR 35,00,000','Ahmedabad')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="land" data-location="Chandigarh" data-price="high">
+            <img src="https://via.placeholder.com/200" alt="Prime Residential Plot">
+            <h3>Prime Residential Plot</h3>
+            <p>Price: INR 1,50,00,000</p>
+            <p>Location: Chandigarh</p>
+            <button onclick="showdetails('Prime Residential Plot','INR 1,50,00,000','Chandigarh')">View Details</button>
+        </div>
+
+        <div class="property-card" data-type="apartment" data-location="Coimbatore" data-price="low">
+            <img src="https://via.placeholder.com/200" alt="Affordable Apartment">
+            <h3>Affordable Apartment</h3>
+            <p>Price: INR 45,00,000</p>
+            <p>Location: Coimbatore</p>
+            <button onclick="showdetails('Affordable Apartment','INR 45,00,000','Coimbatore')">View Details</button>
+        </div>
+    </section>
+
+    <section>
+        <h2>What Our Clients Say</h2>
+        <p>"I found my dream home through this site. Great service!"  Karthik</p>
+        <p>"Very professional and helpful throughout the buying process."  Prince</p>
+    </section>
+
+    <section>
+        <h2>Subscribe to our Newsletter</h2>
+        <form>
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn" onclick="closeModal('contactModal')">&times;</span>
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required><br>
+                <input type="email" placeholder="Your Email" required><br>
+                <textarea placeholder="Your Message" required></textarea><br>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="createAccountModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn" onclick="closeModal('createAccountModal')">&times;</span>
+            <h2>Create Account</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required><br>
+                <input type="email" placeholder="Email" required><br>
+                <input type="password" placeholder="Password" required><br>
+                <input type="password" placeholder="Confirm Password" required><br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn" onclick="closeModal('loginModal')">&times;</span>
+            <h2>Login</h2>
+            <form>
+                <input type="email" placeholder="Email" required><br>
+                <input type="password" placeholder="Password" required><br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <span class="closeBtn" onclick="closeModal('aboutModal')">&times;</span>
+            <h2>About The Skyline Park</h2>
+            <p>
+                The Skyline Park is a leading real estate company dedicated to helping you find your perfect home, land, or apartment across India. 
+                Our website offers a user-friendly platform to explore a wide range of properties with transparent pricing and detailed information.
+            </p>
+            <p>
+                We pride ourselves on excellent customer service and a track record of successful sales that have helped thousands of clients find their dream properties. 
+                Whether you're a first-time buyer or an experienced investor, Skyline Park is your trusted partner in real estate.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function showdetails(name, price, location) {
+            alert("Property: " + name + "\nPrice: " + price + "\nLocation: " + location);
+        }
+
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+
+        function openContactModal() {
+            openModal('contactModal');
+        }
+
+        function showNewProperties() {
+            document.getElementById('property-list').style.display = 'none';
+            document.getElementById('new-property-list').style.display = 'block';
+        }
+
+        function showHomeSection() {
+            document.getElementById('property-list').style.display = 'block';
+            document.getElementById('new-property-list').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modals = ['contactModal', 'createAccountModal', 'loginModal', 'aboutModal'];
+            modals.forEach(id => {
+                const modal = document.getElementById(id);
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+
+        function filterProperties(event) {
+            event.preventDefault();
+
+            const searchText = document.getElementById('searchInput').value.toLowerCase().trim();
+            const selectedType = document.getElementById('propertyTypeSelect').value;
+            const selectedPrice = document.getElementById('priceRangeSelect').value;
+            const properties = document.querySelectorAll('.property-card');
+
+            properties.forEach(card => {
+                const location = card.getAttribute('data-location').toLowerCase();
+                const type = card.getAttribute('data-type').toLowerCase();
+                const price = card.getAttribute('data-price').toLowerCase();
+                const title = card.querySelector('h3').textContent.toLowerCase();
+
+                const matchesSearch = !searchText || location.includes(searchText) || title.includes(searchText);
+
+                const matchesType = !selectedType || selectedType === type;
+
+                let matchesPrice = true;
+                if (selectedPrice === 'low') {
+                    matchesPrice = price === 'low';
+                } else if (selectedPrice === 'mid') {
+                    matchesPrice = price === 'mid';
+                } else if (selectedPrice === 'high') {
+                    matchesPrice = price === 'high';
+                }
+
+                if (matchesSearch && matchesType && matchesPrice) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+        window.onload = () => {
+        fetch('/api/properties')
+            .then(res => res.json())
+            .then(data => {
+                const container = document.getElementById('propertyContainer');
+                container.innerHTML = ''; // Clear existing
+
+                data.forEach(property => {
+                    const card = document.createElement('div');
+                    card.className = 'property-card';
+                    card.innerHTML = `
+                        <img src="${property.image}" alt="${property.name}">
+                        <h3>${property.name}</h3>
+                        <p>Price: ${property.price}</p>
+                        <p>Location: ${property.location}</p>
+                        <button onclick="showdetails('${property.name}', '${property.price}', '${property.location}')">View Details</button>
+                    `;
+                    container.appendChild(card);
+                });
+            })
+            .catch(err => {
+                console.error('Failed to load properties:', err);
+            });
+    };
+    </script>
+
     <footer>
-        <p>2025 Real Estate Company. All rights reserved.</p>
-      </footer>
+        <p>© 2025 Real Estate Company. All rights reserved.</p>
+    </footer>
 </body>
 </html>
