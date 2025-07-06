@@ -252,9 +252,7 @@
                 const type = card.getAttribute('data-type').toLowerCase();
                 const price = card.getAttribute('data-price').toLowerCase();
                 const title = card.querySelector('h3').textContent.toLowerCase();
-
                 const matchesSearch = !searchText || location.includes(searchText) || title.includes(searchText);
-
                 const matchesType = !selectedType || selectedType === type;
 
                 let matchesPrice = true;
