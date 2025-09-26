@@ -7,23 +7,23 @@
 <body>
 
     <header>
-    <div class="logo"style="font-weight: bold; font-style: italic;">The Dream Liner</div>
-    <h1>Welcome to our Real Estate Website</h1>
-    <nav>
-        <ul>
-            <li><a href="#" onclick="showHomeSection()">Home</a></li>
-            <li><a href="#" onclick="showNewProperties()">Properties</a></li>
-            <li><a href="#" onclick="openModal('aboutModal'); return false;">About</a></li>
-            <li><a href="#" onclick="openContactModal(); return false;">Contact</a></li>
-        </ul>
-    </nav>
-    <div class="auth-buttons">
-        <button onclick="openModal('createAccountModal')">Create Account</button>
-        <button onclick="openModal('loginModal')">Login</button>
-    </div>
-</header>
+        <div class="logo" style="font-weight: bold; font-style: italic;">The Dream Liner</div>
+        <h1>Welcome to our Real Estate Website</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="showHomeSection()">Home</a></li>
+                <li><a href="#" onclick="showNewProperties()">Properties</a></li>
+                <li><a href="#" onclick="openModal('aboutModal'); return false;">About</a></li>
+                <li><a href="#" onclick="openContactModal(); return false;">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button onclick="openModal('createAccountModal')">Create Account</button>
+            <button onclick="openModal('loginModal')">Login</button>
+        </div>
+    </header>
 
-    <section style="width: 50%; margin: 20;">
+    <section id="search-section">
         <h2>Find Your Dream Property</h2>
         <form id="searchForm" onsubmit="filterProperties(event)">
             <input type="text" id="searchInput" placeholder="Search by city or type">
@@ -43,7 +43,7 @@
         </form>
     </section>
 
-    <section id="property-list" style="display: block;">
+    <section id="property-list">
         <h2>Featured Properties</h2>
 
         <div class="property-card" data-type="home" data-location="Bengaluru" data-price="mid">
@@ -81,7 +81,6 @@
 
     <section id="new-property-list" style="display: none;">
         <h2>Explore Our New Properties</h2>
-
         <div class="property-card" data-type="home" data-location="Chennai" data-price="mid">
             <img src="https://via.placeholder.com/200" alt="Family Home">
             <h3>Family Home</h3>
@@ -105,30 +104,6 @@
             <p>Location: Hyderabad</p>
             <button onclick="showdetails('Modern Apartment','INR 75,00,000','Hyderabad')">View Details</button>
         </div>
-
-        <div class="property-card" data-type="home" data-location="Ahmedabad" data-price="low">
-            <img src="https://via.placeholder.com/200" alt="Suburban House">
-            <h3>Suburban House</h3>
-            <p>Price: INR 35,00,000</p>
-            <p>Location: Ahmedabad</p>
-            <button onclick="showdetails('Suburban House','INR 35,00,000','Ahmedabad')">View Details</button>
-        </div>
-
-        <div class="property-card" data-type="land" data-location="Chandigarh" data-price="high">
-            <img src="https://via.placeholder.com/200" alt="Prime Residential Plot">
-            <h3>Prime Residential Plot</h3>
-            <p>Price: INR 1,50,00,000</p>
-            <p>Location: Chandigarh</p>
-            <button onclick="showdetails('Prime Residential Plot','INR 1,50,00,000','Chandigarh')">View Details</button>
-        </div>
-
-        <div class="property-card" data-type="apartment" data-location="Coimbatore" data-price="low">
-            <img src="https://via.placeholder.com/200" alt="Affordable Apartment">
-            <h3>Affordable Apartment</h3>
-            <p>Price: INR 45,00,000</p>
-            <p>Location: Coimbatore</p>
-            <button onclick="showdetails('Affordable Apartment','INR 45,00,000','Coimbatore')">View Details</button>
-        </div>
     </section>
 
     <section>
@@ -136,6 +111,7 @@
         <p>"I found my dream home through this site. Great service!"  Karthik</p>
     </section>
 
+    <!-- Modals -->
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="closeBtn" onclick="closeModal('contactModal')">&times;</span>
@@ -179,22 +155,14 @@
         <div class="modal-content">
             <span class="closeBtn" onclick="closeModal('aboutModal')">&times;</span>
             <h2>About The Skyline Park</h2>
-            <p>
-                The Dream Liner is a leading real estate company dedicated to helping you find your perfect home, land, or apartment across India. 
-                Our website offers a user-friendly platform to explore a wide range of properties with transparent pricing and detailed information.
-            </p>
-            <p>
-                We pride ourselves on excellent customer service and a track record of successful sales that have helped thousands of clients find their dream properties. 
-                Whether you're a first-time buyer or an experienced investor, Skyline Park is your trusted partner in real estate.
-            </p>
+            <p>The Skyline Park is a leading real estate company dedicated to helping you find your perfect home, land, or apartment across India. Our website offers a user-friendly platform to explore a wide range of properties with transparent pricing and detailed information.</p>
         </div>
     </div>
 
-   <script src="project.js"></script>
-    
+    <script src="project.js"></script>
+
     <footer>
         <p>© 2025 Real Estate Company. All rights reserved.</p>
     </footer>
 </body>
 </html>
-
