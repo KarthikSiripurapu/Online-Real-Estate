@@ -7,31 +7,28 @@
 <body>
 
     <header>
-        <div class="logo">The Skyline Park</div>
-        <h1>Welcome to our Real Estate Website</h1>
-        <nav>
-            <ul>
-                <li><a href="#" onclick="showHomeSection()">Home</a></li>
-                <li><a href="#" onclick="showNewProperties()">Properties</a></li>
-                <li><a href="#" onclick="openModal('aboutModal'); return false;">About</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <button onclick="openModal('createAccountModal')">Create Account</button>
-            <button onclick="openModal('loginModal')">Login</button>
-        </div>
-    </header>
-
-    <div style="text-align:center; margin: 20px;">
-        <button onclick="openContactModal()">Contact Us</button>
+    <div class="logo"style="font-weight: bold; font-style: italic;">The Dream Liner</div>
+    <h1>Welcome to our Real Estate Website</h1>
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showHomeSection()">Home</a></li>
+            <li><a href="#" onclick="showNewProperties()">Properties</a></li>
+            <li><a href="#" onclick="openModal('aboutModal'); return false;">About</a></li>
+            <li><a href="#" onclick="openContactModal(); return false;">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons">
+        <button onclick="openModal('createAccountModal')">Create Account</button>
+        <button onclick="openModal('loginModal')">Login</button>
     </div>
+</header>
 
     <section>
         <h2>Find Your Dream Property</h2>
         <form id="searchForm" onsubmit="filterProperties(event)">
             <input type="text" id="searchInput" placeholder="Search by city or type">
             <select id="propertyTypeSelect">
-                <option value="">All Property Types</option>
+                <option value="">Property Type</option>
                 <option value="home">Home</option>
                 <option value="land">Land</option>
                 <option value="apartment">Apartment</option>
@@ -137,15 +134,6 @@
     <section>
         <h2>What Our Clients Say</h2>
         <p>"I found my dream home through this site. Great service!"  Karthik</p>
-        <p>"Very professional and helpful throughout the buying process."  Prince</p>
-    </section>
-
-    <section>
-        <h2>Subscribe to our Newsletter</h2>
-        <form>
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit">Subscribe</button>
-        </form>
     </section>
 
     <div id="contactModal" class="modal">
@@ -192,7 +180,7 @@
             <span class="closeBtn" onclick="closeModal('aboutModal')">&times;</span>
             <h2>About The Skyline Park</h2>
             <p>
-                The Skyline Park is a leading real estate company dedicated to helping you find your perfect home, land, or apartment across India. 
+                The Dream Liner is a leading real estate company dedicated to helping you find your perfect home, land, or apartment across India. 
                 Our website offers a user-friendly platform to explore a wide range of properties with transparent pricing and detailed information.
             </p>
             <p>
